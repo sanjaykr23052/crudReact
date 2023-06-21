@@ -2,21 +2,21 @@ const Employees =  [
     {
         id:"1",
         Name:"Sanjay yadav",
-        email:"sanjay@gmail.com",
-        phone:"8765439845"
+        Email:"sanjay@gmail.com",
+        Phone:"8765439845"
     },
     {
         id:"2",
         Name:"Ravi yadav",
-        email:"ravi@gmail.com",
-        phone:"7903771036"
+        Email:"ravi@gmail.com",
+        Phone:"7903771036"
 
     },
     {
         id:"3",
         Name:"Vivek kumar",
-        email:"vivek@gmail.com",
-        phone:"9865439809"
+        Email:"vivek@gmail.com",
+        Phone:"9865439809"
     }
 ]
 
