@@ -7,7 +7,8 @@ import {Link,useNavigate} from 'react-router-dom';
 
 function Edit(){
     const[name, setName] = useState('');
-    const[age, setAge] = useState('');
+    const[email, setEmail] = useState('');
+    const[phone, setPhone] = useState('');
     const[id, setId] = useState('');
 
     let history = useNavigate();
@@ -20,7 +21,8 @@ function Edit(){
 
        let a =  Employees[index];
        a.Name = name;
-       a.Age = age;
+       a.Email = email;
+       a.Phone=phone;
 
 
         history("/");
@@ -28,7 +30,8 @@ function Edit(){
 
     useEffect(() =>{
         setName(localStorage.getItem('Name'))
-        setAge(localStorage.getItem('Age'))
+        setEmail(localStorage.getItem('Email'))
+        setPhone(localStorage.getItem('Phone'))
         setId(localStorage.getItem('Id'))
 
 
