@@ -13,15 +13,20 @@ function Add() {
     let history = useNavigate();
     const handleSubmit = (e) => {
         e.preventDefault();
+        fetch('https://dummyjson.com/users/add', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            firstName: 'Muhammad',
+            lastName: 'Ovi',
+            age: 250,
+            /* other user data */
+          })
+        })
+        .then(res => res.json())
+        .then(console.log);
+                    
 
-        const ids = uuid();
-        let uniqueId = ids.slice(0, 8);
-
-        let a = name,
-            b = email,
-            c = phone;
-
-        Employees.push({ id: uniqueId, Name: a, email: b, phone: c });
         history("/");
     }
     function isValidEmail(email) {

@@ -3,41 +3,44 @@ import { Button, Form } from 'react-bootstrap';
 import "bootstrap/dist/css/bootstrap.min.css";
 import Employees from './Employees';
 import { v4 as uuid } from 'uuid';
-import { Link, useNavigate } from 'react-router-dom';
-
-function Edit() {
-    const [name, setName] = useState('');
+import { Link, useNavigate,useParams } from 'react-router-dom';
+function Edit(props) {
+    const [firstName, setName] = useState('');
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
     const [id, setId] = useState('');
-
     let history = useNavigate();
-    var index = Employees.map(function (e) {
-        return e.id
-    }).indexOf(id);
-
+    const params=useParams()
+   
+useEffect(()=>{
+    setId(params.id)
+},[])
     const handleSubmit = (e) => {
         e.preventDefault();
+        console.log(id)
+        console.log(firstName)
+        fetch(`https://dummyjson.com/users/${id}`, {
+            method: 'PUT', /* or PATCH */
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                firstName: firstName,
+                email:email,
+                phone: phone,
+            })
+          })
+        //   .then(res => res.json())
+          .then(()=>{
+        })
 
-        let a = Employees[index];
-        a.Name = name;
-        a.Email = email;
-        a.Phone = phone;
         history("/");
     }
-
-    useEffect(() => {
-        setName(localStorage.getItem('Name'))
-        setEmail(localStorage.getItem('Email'))
-        setPhone(localStorage.getItem('Phone'))
-        setId(localStorage.getItem('Id'))
-    }, [])
+   
 
     return (
         <div>
             <Form className="d-grid gap-2" style={{ margin: "15rem" }}>
                 <Form.Group className="mb-3" controlId="formName">
-                    <Form.Control type="text" placeholder="Enter Name" value={name} required onChange={(e) => setName(e.target.value)}>
+                    <Form.Control type="text" placeholder="Enter Name" value={firstName} required onChange={(e) => setName(e.target.value)}>
 
                     </Form.Control>
 
